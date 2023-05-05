@@ -5,6 +5,11 @@ register = template.Library()
 
 @register.inclusion_tag('MenuApp/draw_menu.html', takes_context=True)
 def draw_menu(context, menu_name=None):
+    if menu_name is None:
+        return{
+            'error': True,
+            'error_text': 'Ошибка. Передайте тегу "draw_menu" имя существующего мею.',
+        }
     
     def get_elements_from_path(all_menu=None,
                                menu_path_list=None,

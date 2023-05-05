@@ -23,7 +23,7 @@ class Menu(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('myurl', args=[self.slug])
+        return reverse('menu_url', args=[self.slug])
 
 @receiver(pre_save, sender=Menu)
 def create_slug(sender, instance, **kwargs):
