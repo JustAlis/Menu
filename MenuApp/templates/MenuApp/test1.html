@@ -1,0 +1,11 @@
+{% extends 'MenuApp/base.html'   %}
+{% load static %}
+{% load MenuApp_tags %}
+{% block content %}
+    <h3>МЕНЮ products_menu</h3>
+    {% draw_menu 'products_menu' %}
+    <h3>МЕНЮ services_menu</h3>
+    {% draw_menu 'services_menu' %}
+    <h3>НЕСУЩЕСТВУЮЩЕЕ МЕНЮ</h3>
+    {% draw_menu 'menu_test' %}
+{% endblock %}

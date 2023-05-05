@@ -1,0 +1,36 @@
+<!-- Проверить наличие конечной точки -->
+{% if error %}
+    <div class="draw_menu_error">
+        {{error_text}}
+    </div>
+{% else%}
+    <div class="menu">
+        {% for element in menu %}
+            <div class="menu_element" id="{{element.slug}}">
+    <!-- Отображение меню, используя python -->
+                <!-- {% autoescape off %}
+                    {{element.depth_to_draw}}
+                {% endautoescape %} -->
+                <a href="{% url 'menu_url' element.slug %}">{{element}}</a>
+    <!-- Этот скрипт придаёт меню древовидную форму
+        Это можно воплотить и при помощи бэкэнда пайтон, но работнику fronend куда удобнее будет
+        работать со значением depth, чем разбираться в пайтон коде и менять там что-то,
+        а не напрямую в html коде. 
+        Я считаю, что лучше, когда бэк реализован при помощибэка, а фронт при помощи фронта) -->
+                <script type="text/javascript">
+                    var element = document.getElementById('{{element.slug}}')
+                    var depth = Number('{{element.depth}}')
+                    var my_space = new String();
+                    for (i =  0; i<depth; i++) {
+                        my_space+='&emsp;'
+                    }
+                    my_space+='▕'
+                    element.innerHTML = my_space+element.innerHTML
+                </script>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
