@@ -85,7 +85,7 @@ def draw_menu(context, menu_name=None):
     elements_in_path = get_elements_from_path(all_menu=all_menu,
                                               menu_path_list=menu_path_list,
                                               elements_in_path=[])
-#Если путь url не соотвкттвует меню, то следут отобразить первый эелемент в меню
+#Если путь url не соответствует меню, то следет отобразить первый эелемент в меню
 #детей первого элемента отображать не надо, так как он не является выбранным
     if not elements_in_path:
         return(return_fist_element(all_menu=all_menu))
